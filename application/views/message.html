@@ -1,0 +1,39 @@
+<html>
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+  <meta charset="utf-8" />
+  <meta content="width=device-width,minimum-scale=1.0,maximum-scale=1.0" name="viewport" />
+  <meta content="yes" name="apple-mobile-web-app-capable" />
+  <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+  <meta content="telephone=no" name="format-detection" />
+  <link href="<?php echo r_url('css/global.css'); ?>" rel="stylesheet"/>
+  <link rel="stylesheet" href="<?php echo r_url('css/core.css'); ?>" media="screen" title="no title" charset="utf-8">
+  <script type="text/javascript" src="<?php echo r_url('js/Tost.js'); ?>"></script>
+  <title><?php echo $this->config->item('game_name');?>管理后台</title>
+</head>
+<body>
+        <div class="container b-n">
+            <header>
+                <nav class="n_t">
+                    <span class="n_r">
+                        <a href="<?php echo get_url('/index.php/Welcome/menu'); ?>"><img src="<?php echo r_url('imgs/mon/rr.png'); ?>"></a>
+                    </span>
+                    <span>消息</span>
+                    <span class="n_h">
+                        
+                        <a href="<?php echo get_url('/index.php/Welcome/loginout'); ?>">退出</a>
+                    </span>
+                </nav>
+            </header>
+            <!-- 主体内容 -->
+            <div class="content">
+                <div class="user-message">
+                    <?php echo $message ?>
+                </div>
+                <a href="<?php echo $url ?>" class="user-message-btn">
+                    返回
+                </a>
+            </div>
+        </div>
+    </body>
+</html>

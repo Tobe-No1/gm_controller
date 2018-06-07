@@ -1,0 +1,39 @@
+/****************base css start********************/
+body{ color: white;}
+a{color: white;}
+.mt10{ margin-top: 10px;}
+.mt30{ margin-top: 30px;}
+.ml30{margin-left: 30px;}
+.ml10{margin-left: 10px;}
+.primary_bg{background-color: #990400;}
+.minor_bg{background-color: #1e1e1e;}
+.minor_color{color:#811A17;}
+.third_color{color:#646464;}
+.width80pct{width: 80%;}
+.width70pct{width: 70%;}
+.width15pct{width: 15%;}
+
+hr{border-top:1px solid #646464;}
+/****************base css end**********************/
+
+.msg_tip{
+	position: absolute;
+	top:20%;
+	text-align: center;
+	font-size: 2em;
+	width:100%;
+}
+
+.btnBox{
+	position: absolute;
+	top:70%;
+	text-align: center;
+	width:100%;
+	
+}
+.btnBox .downloadBtn{
+	display: block;
+}
+.btnBox .downloadBtn img{
+	width: 200px;	
+}

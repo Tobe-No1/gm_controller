@@ -1,0 +1,325 @@
+body {
+    background: #f2f2f2;
+    font-family: "Arial", "Microsoft YaHei";
+}
+
+em, i {
+    font-style: normal;
+}
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+}
+.register_ico {
+    margin: 1rem 0;
+    height:4rem;
+    background: url("../img/login-ico.png") no-repeat center;
+    background-size: 4rem;
+}
+.copyright {
+    padding: 1.5rem 0;
+    text-align: center;
+    font-size: 0.7rem;
+}
+
+.register .item-content {
+    padding-left: 0;
+}
+
+.register .icon {
+    float: left;
+    margin-right: 0.3rem;
+}
+
+.icon-user {
+    width: 1.2rem;
+    height: 1.2rem;
+    background: url(../img/icon-user.png) no-repeat center;
+    background-size: 1.2rem 1.2rem;
+}
+
+.icon-password {
+    width: 1.2rem;
+    height: 1.2rem;
+    background: url(../img/icon-password.png) no-repeat center;
+    background-size: 1.2rem 1.2rem;
+}
+
+.icon-securityCode {
+    width: 1.2rem;
+    height: 1.2rem;
+    background: url(../img/icon-securityCode.png) no-repeat center;
+    background-size: 1.2rem 1.2rem;
+}
+
+.register .list-block {
+    margin: 0 0.5rem;
+    border:1px solid #ccc;
+}
+
+.register .list-block .item-media + .item-inner {
+    margin-left: 0;
+}
+
+.register .list-block ul:before {
+    display: none;
+}
+
+.register .list-block input {
+    text-indent: 0.6rem;
+}
+
+.message-div {
+    padding: 0.2rem 0;
+    margin: 1rem 1rem;
+    font-size: 0.7rem;
+    text-align: center;
+    background: #fff9b7;
+
+}
+
+.red {
+    color: #f60000;
+}
+
+.list-block {
+    margin: 0;
+}
+
+.icon-f-left {
+    float: left;
+}
+
+.icon-basic-massge:before {
+    background: url("../img/icon-basic-massge.png") no-repeat center;
+}
+
+.icon-charge-inq:before {
+    background: url("../img/icon-charge-inq.png") no-repeat center;
+}
+
+
+
+.icon-direct-player:before {
+    background: url("../img/icon-direct-player.png") no-repeat center;
+}
+
+.icon-direct-agency:before {
+    background: url("../img/icon-direct-agency.png") no-repeat center;
+}
+
+.icon-today-statistics:before {
+    background: url("../img/icon-today-statistics.png") no-repeat center;
+}
+
+.icon-me-money:before {
+    background: url("../img/icon-me-money.png") no-repeat center;
+}
+
+
+.icon-basis-statistics:before {
+    background: url("../img/icon-basis-statistics.png") no-repeat center;
+}
+
+.icon-on-line:before {
+    background: url("../img/icon-on-line.png") no-repeat center;
+}
+
+.icon-activities-manage:before {
+    background: url("../img/icon-activities-manage.png") no-repeat center;
+}
+
+.icon-dial-statistics:before {
+    background: url("../img/icon-dial-statistics.png") no-repeat center;
+}
+
+.icon-new-account:before {
+    background: url("../img/icon-new-account.png") no-repeat center;
+}
+
+.icon-agency-dial:before {
+    background: url("../img/icon-agency-dial.png") no-repeat center;
+}
+.icon-player-dial:before {
+    background: url("../img/icon-player-dial.png") no-repeat center;
+}
+.icon-buy-block:before {
+    background: url("../img/icon-buy-block.png") no-repeat center;
+}
+.icon-charge-detail:before {
+    background: url("../img/icon-charge-detail.png") no-repeat center;
+}
+.icon-agency-detail:before {
+    background: url("../img/icon-agency-detail.png") no-repeat center;
+}
+
+.icon-amend-paddword:before {
+    background: url("../img/icon-amend-paddword.png") no-repeat center;
+}
+.icon-userinfo:before {
+    background: url("../img/icon-userinfo.png") no-repeat center;
+}
+.icon-issue-pop:before {
+    background: url("../img/icon-issue-pop.png") no-repeat center;
+}
+.icon-message-inq:before {
+    background: url("../img/icon-message-inq.png") no-repeat center;
+}
+.icon-account-manage:before {
+    background: url("../img/icon-account-manage.png") no-repeat center;
+}
+
+.icon-f-left:before{
+    content: "";
+    float: left;
+    display: inline-block;
+    width: 1.45rem;
+    height:1.45rem;
+    background-size: 1.45rem;
+}
+
+
+.page-group-change .list-block .item-title {
+    line-height: 1.2rem;
+}
+
+.red-number {
+    display: inline-block;
+    padding:0 0.4rem;
+    margin-left: 0.2rem;
+    background: #ff6470;
+    color: #fff;
+    font-size: 0.7rem;
+    border-radius: 3px;
+}
+
+.diamond {
+    background-color: #a14aff;
+    padding:0 0.4rem;
+    margin:0 0.8rem 0;
+    display:inline-block;
+    color:#fff;
+    border-radius:3px;
+}
+
+.input-time {
+    height: 1.8rem !important;
+    padding-left: 0 !important;
+}
+
+.charge-inq .buttom-inq {
+    margin:1.4rem 1rem ;
+}
+
+.color-gray {
+    color: #a9a9a9 !important;
+}
+
+.color-blue {
+    color: #3c76ff !important;
+}
+
+.color-green {
+    color: #35b87f;
+}
+
+.color-orange {
+    color:#ffa200;
+}
+
+.colo-red {
+    color: #f6383a;
+}
+/*table*/
+
+.table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+    font-size: 0.5rem;
+    text-align: center;
+    white-space: nowrap;
+    background: #fff;
+}
+.table > thead > tr > th,
+.table > tbody > tr > th,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > td,
+.table > tfoot > tr > td {
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border-top: 1px solid #ddd;
+}
+.table > thead > tr > th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #ddd;
+    color: #a9a9a9;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: #f9f9f9;
+}
+
+.table-striped img {
+    max-width: 3rem;
+    max-height: 3rem;
+}
+
+.charge-inq .total  {
+    margin:0;
+    padding: 1rem 0.5rem 0 0.5rem;
+    font-size: 0.7rem;
+}
+
+.user-header {
+    float: left;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 50%;
+}
+
+.list-block .item-content-tow {
+    padding-bottom: 0.35rem;
+    margin-left: 0.75rem;
+    border-bottom: 1px solid #f3f3f3;
+}
+.list-block .item-content-tow .tow-title {
+    padding:0;
+    margin: 0.4rem 0;
+    font-size: 0.7rem;
+}
+
+.list-block .item-content-tow .label {
+    padding:0.2rem 0.2rem;
+}
+
+/*分页*/
+.page-on {
+    margin: 1rem !important;
+    text-align: left;
+    overflow: hidden;
+    background: none !important;
+}
+
+.page-on .active {
+    display: block;
+    background:#b9ceff !important;
+}
+
+.page-on .link {
+    display: inline-block;
+    float: left;
+    font-size: 0.5rem;
+    border: 1px solid #e5e5e5;
+    padding: 0.1rem 0.3rem;
+    text-align: center;
+    background: #fff;
+    margin-left: 0.3rem;
+}

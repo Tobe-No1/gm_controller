@@ -1,0 +1,147 @@
+/*
+  手机端默认CSS
+*/
+body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,figcaption,figure,fieldset,legend,button,input,textarea,th,td{margin:0;padding:0}
+body,button,input,select,textarea{font:12px/1 Lucida Grande,'Microsoft YaHei',"Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,Verdana,sans-serif}
+h1{font-size:18px;font-weight:normal}
+h2{font-size:16px;font-weight:normal}
+h3{font-size:14px;font-weight:normal}
+h4,h5,h6{font-size:100%;font-weight:normal}
+address,cite,dfn,em,var{font-style:normal}
+code,kbd,pre,samp,tt{font-family:"Courier New",Courier,monospace}
+small{font-size:12px}
+ul,ol,li{list-style:none}
+a{text-decoration:none}
+abbr[title],acronym[title]{border-bottom:1px dotted;cursor:help}
+q:before,q:after{content:''}
+legend{color:#000}
+fieldset,img{border:0}
+table{border-collapse:collapse;border-spacing:0}
+hr{border:0;height:1px}
+*{-ms-word-break:break-all;word-break:break-all;-ms-word-wrap:break-word;word-wrap:break-word;-webkit-tap-highlight-color:rgba(0,0,0,0);color:#333;}
+body{-moz-user-select: none;}
+input{outline:none}
+textarea{resize:none}
+/* H5元素 */
+header {
+  height: 48px;
+  line-height: 48px;
+  border-bottom: 1px solid #cccccc;
+}
+.content {
+  width: 100%;
+  height: 100%;
+}
+/* Font */
+.text-center {text-align: center;}
+.font-bord {font-weight: bold;}
+/* 首页样式 */
+#muen-icon {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding:12px;
+}
+#muen-icon img {position: inherit;width: 24px;height: 24px;}
+/* 遮罩shade */
+#shade {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 20;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(23, 23, 23, 0.6);
+}
+/* 菜单样式 */
+#menu {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  width: 250px;
+  background-color: #f4f4f4;
+}
+
+/* 头像 */
+.menu-head {width: 100%;padding-top: 20px;padding-bottom: 40px;}
+.head-sculpture {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+}
+.head-sculpture img {
+  width: 100%;
+  height: 100%;
+  -moz-border-radius: 40px;      /* Gecko browsers */
+  -webkit-border-radius: 40px;   /* Webkit browsers */
+  border-radius:40px;            /* W3C syntax */
+  border-bottom: 2px solid #000;
+}
+
+/* 菜单项 */
+.menu-menu {width: 100%;}
+.menu-list {margin-left: 20px;}
+.menu-list-item {position: relative;padding-top: 5px;margin-bottom: 15px;padding-bottom: 8px;border-bottom: 1px solid #ccc;margin-right: 20px;}
+.menu-list-item p {line-height: 30px;position: absolute;left: 40px;top: 0px;font-size: 18px;}
+.menu-list-item img {width: 30px;height: 30px;}
+.menu-list-item:active {background-color: #eae5e5;}
+
+/* 登陆页面 */
+.login-form {width: 200px;margin: 0 auto;padding-top: 80px;}
+.login-form input[type=text]{width: 96%;height: 30px;line-height: 30px;font-size: 14px;padding-left: 2%;padding-right: 2%;}
+.login-form input[type=password]{width: 96%;height: 30px;line-height: 30px;font-size: 14px;padding-left: 2%;padding-right: 2%;margin-top: 10px;}
+.login-form input[type=button]{width: 204px;height: 40px;line-height: 40px;font-size: 14px;border: 0;margin-top: 20px;background-color: #87da91;}
+.login-form input[type=button]:active {background-color: #62a26a;}
+
+/* 修改密码页面 */
+.modify-password {width: 200px;margin: 0 auto;padding-top: 80px;}
+.modify-password input[type=password]{width: 96%;height: 30px;line-height: 30px;font-size: 14px;padding-left: 2%;padding-right: 2%;margin-top: 8px;}
+.modify-password input[type=button]{width: 204px;height: 40px;line-height: 40px;font-size: 14px;border: 0;margin-top: 20px;background-color: #87da91;}
+.modify-password input[type=button]:active {background-color: #62a26a;}
+
+/* 选项面板 */
+.option-panel {width: 100%;height: 100%;}
+.option-panel .option-panel-title {width: 100%;height: 40px;line-height: 40px;font-size: 15px;}
+.option-panel .option-panel-title div {float: left;text-align: center;background-color: #f4f4f4;}
+.option-panel .option-panel-title .active {background-color: #fff;border-left: 1px solid #cccccc;border-right: 1px solid #cccccc;color: #e85959}
+.option-panel .option-panel-panel {width: 100%;}
+.option-panel .option-panel-panel .item {width: 100%;height: 100%;display: none;overflow-y:visible}
+
+/* 用户信息 */
+.m-body {width: 94%;margin: 0 auto;padding-top: 30px;}
+.user-info {font-size: 14px;line-height: 22px;font-weight: 400;}
+
+/* 查找用户 */
+.query-user {width: 100%;padding-top: 30px;}
+.query-user input[type=text]{width: 95%;height: 30px;line-height: 30px;font-size: 14px;padding-left: 2%;padding-right: 2%;}
+.query-user input[type=button]{width: 100%;;height: 40px;line-height: 40px;font-size: 14px;border: 1px solid #87da91;margin-top: 20px;background-color: #87da91;}
+.query-user input[type=button]:active {background-color: #62a26a;}
+
+/* 查询结果 */
+.query-fruit {width: 100%;margin-top: 30px;border-top: 1px solid #ccc;}
+.query-fruit .query-fruit-item {
+  border-bottom: 1px solid #ccc;
+  height: 60px;
+  position: relative;
+  padding-bottom: 8px;
+  padding-top: 8px;
+  margin-top: 8px;
+}
+.query-fruit .query-fruit-item img {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border: 1px solid #f4f4f4;
+  left: 8px;
+}
+.query-fruit .query-fruit-item .text {
+  padding-left: 80px;
+  line-height: 30px;
+  font-size: 14px;
+}
+.query-fruit .query-fruit-item:active {background-color: #f4f4f4;}
+
+/* 统计 */
+.statistics-content {width: 100%;}
+.statistics-content .statistics-content-item {width: 33%;float: left;text-align: center;line-height: 30px;font-size: 16px;}

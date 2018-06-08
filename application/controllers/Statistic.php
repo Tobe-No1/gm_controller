@@ -531,17 +531,21 @@ class Statistic extends CI_Controller
         $list = array();
         if(count($_list1)>0){
             foreach ($_list1 as $k => $v){
-                foreach ($_list2 as $s=>$t){
-                    if($k == $s){
-                        $list[$k]=$v+$t;
-                    }else{
-                        if(!array_key_exists($k,$list)){
-                            $list[$k]=$v;
-                        }
-                        if(!array_key_exists($s,$list)){
-                            $list[$s]=$t;
+                if(count($_list2)>0){
+                    foreach ($_list2 as $s=>$t){
+                        if($k == $s){
+                            $list[$k]=$v+$t;
+                        }else{
+                            if(!array_key_exists($k,$list)){
+                                $list[$k]=$v;
+                            }
+                            if(!array_key_exists($s,$list)){
+                                $list[$s]=$t;
+                            }
                         }
                     }
+                }else{
+                    $list = $_list1;
                 }
             }
         }else{

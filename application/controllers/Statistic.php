@@ -501,10 +501,20 @@ class Statistic extends CI_Controller
 
         $current = $this->uri->segment(5, 1); // 页数
         //时间表
-        $sql3 = "select FROM_UNIXTIME(b.create_time,'%Y-%m-%d') AS t from user a left join card_log b on a.uid=b.uid where b.change_type=0 GROUP BY t ORDER BY t DESC";
-        $date = $this->game_db->query($sql3)->result_array();
-        foreach($date as $k=>$v){
-            $date[$k]=$v['t'];
+	$data= array();
+        $sql3 = "select FROM_UNIXTIME(b.create_time,'%Y-%m-%d') AS t from user a left join card_log b on a.uid=b.uid where b.change_type=0 GROUP BY t ORDER BY t DESC limit 0,31";
+        $date1 = $this->game_db->query($sql3)->result_array();
+        $sql4 = "select FROM_UNIXTIME(create_time,'%Y-%m-%d') AS t from clubs_card_log where opt=2 GROUP BY t ORDER BY t DESC limit 0,31";
+        $date2 = $this->game_db->query($sql4)->result_array();
+	if(!$date1 && !$date2){return;}
+        $_date = array_merge($date1,$date2);
+	foreach($_date as $k=>$v){
+            $_date[$k]=$v['t'];
+        }
+        $_date = array_unique($_date);
+        arsort($_date);
+        foreach($_date as $val){
+            $date[] = $val;
         }
         //玩家id,name表
         $sql = "select uid,name from user";

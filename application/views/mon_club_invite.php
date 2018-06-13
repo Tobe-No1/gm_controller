@@ -62,10 +62,10 @@
 <img id="bg" src="<?php echo r_url_new('img/bg.png'); ?>" width="100%" height="100%" style="right: 0; bottom: 0;position: absolute; top: 0; z-index=-1" />
 <div class="msg_tip">
     <img src="<?php echo isset($invite_head)? $invite_head : r_url_new('img/head.png'); ?>">
-    <p>玩家<span><?php echo $invite_name? $invite_name:"";?></span></p><p>邀请你加入亲友圈:</p><p><span><?php echo $club_name? $club_name:"";?></span></p>
+    <p>玩家<span><?php echo isset($invite_name)? $invite_name:"";?></span></p><p>邀请你加入亲友圈:</p><p><span><?php echo isset($club_name)? $club_name:"";?></span></p>
 </div>
 <div class="btnBox">
-    <a href="#" class="downloadBtn" uid="<?php echo $uid?>" invite_id="<?php echo $invite_id?>" club_id="<?php echo $club_id?>" account="<?php echo $account?>"><img src="<?php echo r_url_new('img/icon-03.png'); ?>" /></a>
+    <a href="#" class="downloadBtn" uid="<?php echo isset($uid)?$uid:-1; ?>" invite_id="<?php echo isset($invite_id)?$invite_id:-1; ?>" club_id="<?php echo isset($club_id)?$club_id:-1; ?>" account="<?php echo isset($account)?$account:-1;?>"><img src="<?php echo r_url_new('img/icon-03.png'); ?>" /></a>
 </div>
 <div class="weixin-tip">
     <p> <img src="<?php echo r_url_new('img/weixin_tips.png'); ?>" alt="在浏览器打开"><span id="close" title="关闭" class="close" onclick="$(this).closest('div').hide()">×</span> </p>
@@ -101,28 +101,35 @@
             var club_id = parseInt($(this).attr('club_id'));
             var account = $(this).attr('account');
             var data = {'uid':uid,'invite_id':invite_id,'club_id':club_id,'account':account};
+
+            if(uid<0){
+                alert('请先注册');
+            }else if(invite_id<0||club_id<0||account<0){
+                alert('俱乐部或者圈主不存在');
+            }else{
+                $.ajax({
+                    url:'/index.php/Welcome/ajax_club_invite',
+                    type:'post',
+                    dataType: 'json',
+                    data:data,
+                    error:function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert('socket连接失败');
+                    },
+                    success:function (respond) {
+                        // alert(respond);
+                        if (respond.error == 0) {
+                            alert('恭喜加入成功');
+                        } else{
+                            alert(respond.msg);
+                        }
+                    }
+                });
+            }
             /*if(isWeixin) {
                 $(".weixin-tip").css("height", winHeight);
                 $(".weixin-tip").show();
                 return false;
             }*/
-            $.ajax({
-                url:'/index.php/Welcome/ajax_club_invite',
-                type:'post',
-                dataType: 'json',
-                data:data,
-                error:function (XMLHttpRequest, textStatus, errorThrown) {
-                    alert('socket连接失败');
-                },
-                success:function (respond) {
-                    // alert(respond);
-                    if (respond.error == 0) {
-                        alert('恭喜加入成功');
-                    } else{
-                        alert(respond.msg);
-                    }
-                }
-            });
         });
     })
 </script>

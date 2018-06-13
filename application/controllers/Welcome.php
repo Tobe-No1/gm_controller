@@ -196,6 +196,10 @@ class Welcome extends CI_Controller {
         header("Location:" . $this->config->item('download_url') . "?v=" . date('mdHi')); //跳到玩家管理页面
     }
 
+    /*
+     * 流程优化，即使用户失败，也可以看到正常页面
+     * 需要把club_id和recomment_agent_id传递进invite();
+     * */
     public function club_invite()
     {
         $recomment_agent_id = $this->uri->segment(3, 1);
@@ -213,12 +217,12 @@ class Welcome extends CI_Controller {
             $tmp = curl_exec($ch);
             curl_close($ch);
             if (!$tmp) {
-                header("Location:" . site_url('Welcome/invite')); //跳到玩家管理页面
+                header("Location:" . site_url('Welcome/invite')."?invite_id=".$recomment_agent_id."&club_id=".$clubid); //跳到玩家管理页面
                 return;
             }
             $access_token = json_decode($tmp, true);
             if (isset($access_token['errcode'])) {
-                header("Location:" . site_url('Welcome/invite')); //跳到玩家管理页面
+                header("Location:" . site_url('Welcome/invite')."?invite_id=".$recomment_agent_id."&club_id=".$clubid); //跳到玩家管理页面
                 return;
             }
             $userinfo_url = sprintf("https://api.weixin.qq.com/sns/userinfo?access_token=%s&openid=%s", $access_token['access_token'], $access_token['openid']);
@@ -230,7 +234,7 @@ class Welcome extends CI_Controller {
             $tmp_info = curl_exec($ch);
             curl_close($ch);
             if (!$tmp_info) {
-                header("Location:" . site_url('Welcome/invite')); //跳到玩家管理页面
+                header("Location:" . site_url('Welcome/invite')."?invite_id=".$recomment_agent_id."&club_id=".$clubid); //跳到玩家管理页面
                 return;
             }
             $info = json_decode($tmp_info, true);
@@ -240,14 +244,36 @@ class Welcome extends CI_Controller {
                 return;
             }
         }
-        header("Location:" . site_url('Welcome/invite'));
+        header("Location:" . site_url('Welcome/invite')."?invite_id=".$recomment_agent_id."&club_id=".$clubid); //跳到玩家管理页面
     }
 
     public function invite()
     {
         $data = array();
+        if(isset($_GET['invite_id'])){
+            $invite_id = trim($_GET['invite_id']);
+            $sql = "select * from user WHERE uid = ".$invite_id;
+            $result = $this->game_db->query($sql)->row_array();
+            $invite_name = $result['name'];
+            $invite_head = $result['head'];
+            $data['invite_id'] = $invite_id;
+            $data['invite_name'] = $invite_name;
+            $data['invite_head'] = $invite_head;
+        }
+
+        $club_name = "";
+        if(isset($_GET['club_id'])){
+            $club_id = trim($_GET['club_id']);
+            $sql = "select * from clubs where id=".$club_id;
+            $result = $this->game_db->query($sql)->row_array();
+            $club_name = $result['club_name'];
+            $data['club_id'] = $club_id;
+            $data['club_name'] = $club_name;
+        }
+
         if(isset($_GET['account'])){
             $account = trim($_GET['account']);
+            $data['account'] = $account;
         }else{
             $this->load->view('mon_club_invite.php',$data);
             alert('请先注册');
@@ -261,30 +287,8 @@ class Welcome extends CI_Controller {
             alert('请先注册');
             return;
         }
-        if(isset($_GET['invite_id'])){
-            $invite_id = trim($_GET['invite_id']);
-            $sql = "select * from user WHERE uid = ".$invite_id;
-            $result = $this->game_db->query($sql)->row_array();
-            $invite_name = $result['name'];
-            $invite_head = $result['head'];
-        }
-        $club_name = "";
-        if(isset($_GET['club_id'])){
-            $club_id = trim($_GET['club_id']);
-            $sql = "select * from clubs where id=".$club_id;
-            $result = $this->game_db->query($sql)->row_array();
-            $club_name = $result['club_name'];
-        }
 
-        $data = array(
-            'uid'=>$user['uid'],
-            'invite_name'=>$invite_name,
-            'invite_head'=>$invite_head,
-            'club_name'=>$club_name,
-            'club_id'=>$club_id,
-            'invite_id'=>$invite_id,
-            'account'=>$account,
-        );
+        $data['uid'] = $user['uid'];
         $this->load->view('mon_club_invite.php',$data);
     }
 

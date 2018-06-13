@@ -174,7 +174,7 @@ $(function () {
 
         $('.recommendid').click(function () {
             var uid = $(this).attr('uid');
-            var recommend_id = prompt("请输入代理ID，修改成功后，被邀请码、代理等级自动更新");
+            var recommend_id = prompt("请输入上级代理ID，修改成功后，被邀请码、代理等级自动更新");
             if (recommend_id === null) {
                 return;
             }

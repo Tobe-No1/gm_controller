@@ -5,15 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="939dc339-697e-4eec-b042-8449f4248bd8" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/application/views/mon_player_gold.php" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/application/config/config.php" afterPath="$PROJECT_DIR$/application/config/config.php" />
-      <change beforePath="$PROJECT_DIR$/application/controllers/Login.php" afterPath="$PROJECT_DIR$/application/controllers/Login.php" />
-      <change beforePath="$PROJECT_DIR$/application/controllers/Stat.php" afterPath="$PROJECT_DIR$/application/controllers/Stat.php" />
       <change beforePath="$PROJECT_DIR$/application/controllers/Statistic.php" afterPath="$PROJECT_DIR$/application/controllers/Statistic.php" />
-      <change beforePath="$PROJECT_DIR$/application/controllers/User.php" afterPath="$PROJECT_DIR$/application/controllers/User.php" />
-      <change beforePath="$PROJECT_DIR$/application/controllers/Welcome.php" afterPath="$PROJECT_DIR$/application/controllers/Welcome.php" />
-      <change beforePath="$PROJECT_DIR$/res/js/share.js" afterPath="$PROJECT_DIR$/res/js/share.js" />
+      <change beforePath="$PROJECT_DIR$/application/views/mon_statistic.php" afterPath="$PROJECT_DIR$/application/views/mon_statistic.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -94,44 +88,55 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Statistic.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Statistic.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/controllers/Statistic.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="551">
-              <caret line="325" column="29" lean-forward="false" selection-start-line="325" selection-start-column="29" selection-end-line="325" selection-end-column="29" />
+            <state relative-caret-position="272">
+              <caret line="245" column="48" lean-forward="false" selection-start-line="245" selection-start-column="48" selection-end-line="245" selection-end-column="48" />
               <folding>
-                <marker date="1528947039579" expanded="true" signature="3775:4167" ph="select ch.us... user_props_consume_history" />
-                <marker date="1528947039579" expanded="true" signature="4248:4330" ph="select count... user_props_consume_history" />
-                <marker date="1528947039579" expanded="true" signature="5782:5822" ph="select * fro... room_log" />
-                <marker date="1528947039579" expanded="true" signature="7968:8007" ph="select id fr... products" />
-                <marker date="1528947039579" expanded="true" signature="8267:8482" ph="select FROM_... charge" />
-                <marker date="1528947039579" expanded="true" signature="10630:10707" ph="select sum(c... clubs_card_log" />
-                <marker date="1528947039579" expanded="true" signature="10803:10890" ph="select sum(n... card_log" />
-                <marker date="1528947039579" expanded="true" signature="11280:11357" ph="select sum(n... card_log" />
-                <marker date="1528947039579" expanded="true" signature="11476:11553" ph="select sum(c... clubs_card_log" />
-                <marker date="1528947039579" expanded="true" signature="11883:12033" ph="select sub_t... card_log" />
-                <marker date="1528947039579" expanded="true" signature="12325:12475" ph="select sub_t... clubs_card_log" />
-                <marker date="1528947039579" expanded="true" signature="14420:14585" ph="select sum(c... clubs_card_log" />
-                <marker date="1528947039579" expanded="true" signature="14680:14776" ph="select sum(n... card_log" />
-                <marker date="1528947039579" expanded="true" signature="15172:15264" ph="select sum(n... card_log" />
-                <marker date="1528947039579" expanded="true" signature="15383:15545" ph="select sum(c... clubs_card_log" />
-                <marker date="1528947039579" expanded="true" signature="15845:16010" ph="select sub_t... card_log" />
-                <marker date="1528947039579" expanded="true" signature="16272:16507" ph="select sub_t... clubs_card_log" />
-                <marker date="1528947039579" expanded="true" signature="19312:19491" ph="select FROM_... user" />
-                <marker date="1528947039579" expanded="true" signature="19648:19941" ph="select u.uid... user" />
-                <marker date="1528947039579" expanded="true" signature="21997:22156" ph="select FROM_... user" />
-                <marker date="1528947039579" expanded="true" signature="22239:22358" ph="select FROM_... clubs_card_log" />
-                <marker date="1528947039579" expanded="true" signature="22743:22768" ph="select uid,n... user" />
-                <marker date="1528947039579" expanded="true" signature="22927:23168" ph="select a.uid... user" />
-                <marker date="1528947039579" expanded="true" signature="23324:23574" ph="select b.uid... clubs_card_log" />
-                <marker date="1528947039579" expanded="true" signature="26085:26180" ph="select * fro... mg_user" />
-                <marker date="1528947039579" expanded="true" signature="26675:26812" ph="select count... " />
-                <marker date="1528947039579" expanded="true" signature="27045:27098" ph="select count... " />
-                <marker date="1528947039579" expanded="true" signature="30003:30160" ph="select a.*,b... charge" />
-                <marker date="1528947039579" expanded="true" signature="30250:30378" ph="select count... " />
-                <marker date="1528947039579" expanded="true" signature="33068:33252" ph="select a.*,b... mg_user_charge" />
-                <marker date="1528947039579" expanded="true" signature="33337:33430" ph="select sum(r... " />
+                <marker date="1529553030097" expanded="true" signature="3775:4167" ph="select ch.us... user_props_consume_history" />
+                <marker date="1529553030097" expanded="true" signature="4248:4330" ph="select count... user_props_consume_history" />
+                <marker date="1529553030097" expanded="true" signature="5782:5822" ph="select * fro... room_log" />
+                <marker date="1529553030097" expanded="true" signature="7993:8022" ph="select id,mt... products" />
+                <marker date="1529553030097" expanded="true" signature="8523:8738" ph="select FROM_... charge" />
+                <marker date="1529553030097" expanded="true" signature="8759:8982" ph="select FROM_... charge" />
+                <marker date="1529553030097" expanded="true" signature="11769:11846" ph="select sum(c... clubs_card_log" />
+                <marker date="1529553030097" expanded="true" signature="11942:12029" ph="select sum(n... card_log" />
+                <marker date="1529553030097" expanded="true" signature="12419:12496" ph="select sum(n... card_log" />
+                <marker date="1529553030097" expanded="true" signature="12615:12692" ph="select sum(c... clubs_card_log" />
+                <marker date="1529553030097" expanded="true" signature="13022:13172" ph="select sub_t... card_log" />
+                <marker date="1529553030097" expanded="true" signature="13464:13614" ph="select sub_t... clubs_card_log" />
+                <marker date="1529553030097" expanded="true" signature="15559:15724" ph="select sum(c... clubs_card_log" />
+                <marker date="1529553030097" expanded="true" signature="15819:15915" ph="select sum(n... card_log" />
+                <marker date="1529553030097" expanded="true" signature="16311:16403" ph="select sum(n... card_log" />
+                <marker date="1529553030097" expanded="true" signature="16522:16684" ph="select sum(c... clubs_card_log" />
+                <marker date="1529553030097" expanded="true" signature="16984:17149" ph="select sub_t... card_log" />
+                <marker date="1529553030097" expanded="true" signature="17411:17646" ph="select sub_t... clubs_card_log" />
+                <marker date="1529553030097" expanded="true" signature="20451:20630" ph="select FROM_... user" />
+                <marker date="1529553030097" expanded="true" signature="20787:21080" ph="select u.uid... user" />
+                <marker date="1529553030097" expanded="true" signature="23136:23295" ph="select FROM_... user" />
+                <marker date="1529553030097" expanded="true" signature="23378:23497" ph="select FROM_... clubs_card_log" />
+                <marker date="1529553030097" expanded="true" signature="23882:23907" ph="select uid,n... user" />
+                <marker date="1529553030097" expanded="true" signature="24066:24307" ph="select a.uid... user" />
+                <marker date="1529553030097" expanded="true" signature="24463:24713" ph="select b.uid... clubs_card_log" />
+                <marker date="1529553030097" expanded="true" signature="27224:27319" ph="select * fro... mg_user" />
+                <marker date="1529553030097" expanded="true" signature="27814:27951" ph="select count... " />
+                <marker date="1529553030097" expanded="true" signature="28184:28237" ph="select count... " />
+                <marker date="1529553030097" expanded="true" signature="31142:31299" ph="select a.*,b... charge" />
+                <marker date="1529553030097" expanded="true" signature="31389:31517" ph="select count... " />
+                <marker date="1529553030097" expanded="true" signature="34207:34391" ph="select a.*,b... mg_user_charge" />
+                <marker date="1529553030097" expanded="true" signature="34476:34569" ph="select sum(r... " />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mon_statistic.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/mon_statistic.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="465">
+              <caret line="45" column="80" lean-forward="true" selection-start-line="45" selection-start-column="80" selection-end-line="45" selection-end-column="80" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -175,7 +180,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Login.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Login.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/controllers/Login.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="483">
@@ -312,7 +317,6 @@
       <find>活动配置</find>
       <find>create_links</find>
       <find>ajax_award_boka</find>
-      <find>base</find>
       <find>begin</find>
       <find>get</find>
       <find>png</find>
@@ -328,6 +332,7 @@
       <find>query_fruit2</find>
       <find>init</find>
       <find>set_userdata</find>
+      <find>base</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -356,7 +361,6 @@
         <option value="$PROJECT_DIR$/application/models/Game_model.php" />
         <option value="$PROJECT_DIR$/application/views/common/footer.php" />
         <option value="$PROJECT_DIR$/application/views/mon_award_query.php" />
-        <option value="$PROJECT_DIR$/application/views/mon_statistic.php" />
         <option value="$PROJECT_DIR$/../gm1/gm/application/controllers/Statistic.php" />
         <option value="$PROJECT_DIR$/../gm1/gm/application/views/mon_cost.php" />
         <option value="$PROJECT_DIR$/../gm1/gm/application/views/mon_statistic.php" />
@@ -375,7 +379,6 @@
         <option value="$PROJECT_DIR$/../../test/index.php" />
         <option value="$PROJECT_DIR$/application/views/mon_club_invite.php" />
         <option value="$PROJECT_DIR$/application/views/mon_cost.php" />
-        <option value="$PROJECT_DIR$/application/controllers/Statistic.php" />
         <option value="$PROJECT_DIR$/application/controllers/Welcome.php" />
         <option value="$PROJECT_DIR$/application/views/mon_player_gold.php" />
         <option value="$PROJECT_DIR$/res/js/share.js" />
@@ -384,6 +387,8 @@
         <option value="$PROJECT_DIR$/application/controllers/Stat.php" />
         <option value="$PROJECT_DIR$/application/controllers/Login.php" />
         <option value="$PROJECT_DIR$/application/views/mon_login.php" />
+        <option value="$PROJECT_DIR$/application/views/mon_statistic.php" />
+        <option value="$PROJECT_DIR$/application/controllers/Statistic.php" />
       </list>
     </option>
   </component>
@@ -439,18 +444,7 @@
               <item name="gm" type="b2602c69:ProjectViewProjectNode" />
               <item name="gm" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="application" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="models" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="gm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="gm" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="res" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="gm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="gm" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="res" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="js" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="gm" type="b2602c69:ProjectViewProjectNode" />
@@ -522,12 +516,12 @@
       <workItem from="1528681627595" duration="4815000" />
       <workItem from="1528857802125" duration="2159000" />
       <workItem from="1528945083919" duration="5203000" />
-      <workItem from="1529374259618" duration="18625000" />
+      <workItem from="1529374259618" duration="23895000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="280977000" />
+    <option name="totallyTimeSpent" value="286247000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
@@ -566,13 +560,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application/config/database.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-596">
-          <caret line="9" column="4" lean-forward="false" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/system/libraries/Xmlrpc.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="398">
@@ -946,46 +933,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/Statistic.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
-          <caret line="325" column="29" lean-forward="false" selection-start-line="325" selection-start-column="29" selection-end-line="325" selection-end-column="29" />
-          <folding>
-            <marker date="1528947039579" expanded="true" signature="3775:4167" ph="select ch.us... user_props_consume_history" />
-            <marker date="1528947039579" expanded="true" signature="4248:4330" ph="select count... user_props_consume_history" />
-            <marker date="1528947039579" expanded="true" signature="5782:5822" ph="select * fro... room_log" />
-            <marker date="1528947039579" expanded="true" signature="7968:8007" ph="select id fr... products" />
-            <marker date="1528947039579" expanded="true" signature="8267:8482" ph="select FROM_... charge" />
-            <marker date="1528947039579" expanded="true" signature="10630:10707" ph="select sum(c... clubs_card_log" />
-            <marker date="1528947039579" expanded="true" signature="10803:10890" ph="select sum(n... card_log" />
-            <marker date="1528947039579" expanded="true" signature="11280:11357" ph="select sum(n... card_log" />
-            <marker date="1528947039579" expanded="true" signature="11476:11553" ph="select sum(c... clubs_card_log" />
-            <marker date="1528947039579" expanded="true" signature="11883:12033" ph="select sub_t... card_log" />
-            <marker date="1528947039579" expanded="true" signature="12325:12475" ph="select sub_t... clubs_card_log" />
-            <marker date="1528947039579" expanded="true" signature="14420:14585" ph="select sum(c... clubs_card_log" />
-            <marker date="1528947039579" expanded="true" signature="14680:14776" ph="select sum(n... card_log" />
-            <marker date="1528947039579" expanded="true" signature="15172:15264" ph="select sum(n... card_log" />
-            <marker date="1528947039579" expanded="true" signature="15383:15545" ph="select sum(c... clubs_card_log" />
-            <marker date="1528947039579" expanded="true" signature="15845:16010" ph="select sub_t... card_log" />
-            <marker date="1528947039579" expanded="true" signature="16272:16507" ph="select sub_t... clubs_card_log" />
-            <marker date="1528947039579" expanded="true" signature="19312:19491" ph="select FROM_... user" />
-            <marker date="1528947039579" expanded="true" signature="19648:19941" ph="select u.uid... user" />
-            <marker date="1528947039579" expanded="true" signature="21997:22156" ph="select FROM_... user" />
-            <marker date="1528947039579" expanded="true" signature="22239:22358" ph="select FROM_... clubs_card_log" />
-            <marker date="1528947039579" expanded="true" signature="22743:22768" ph="select uid,n... user" />
-            <marker date="1528947039579" expanded="true" signature="22927:23168" ph="select a.uid... user" />
-            <marker date="1528947039579" expanded="true" signature="23324:23574" ph="select b.uid... clubs_card_log" />
-            <marker date="1528947039579" expanded="true" signature="26085:26180" ph="select * fro... mg_user" />
-            <marker date="1528947039579" expanded="true" signature="26675:26812" ph="select count... " />
-            <marker date="1528947039579" expanded="true" signature="27045:27098" ph="select count... " />
-            <marker date="1528947039579" expanded="true" signature="30003:30160" ph="select a.*,b... charge" />
-            <marker date="1528947039579" expanded="true" signature="30250:30378" ph="select count... " />
-            <marker date="1528947039579" expanded="true" signature="33068:33252" ph="select a.*,b... mg_user_charge" />
-            <marker date="1528947039579" expanded="true" signature="33337:33430" ph="select sum(r... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/controllers/Stat.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
@@ -1138,6 +1085,55 @@
             <marker date="1529479685074" expanded="true" signature="8917:8958" ph="select * fro... config_huodong" />
             <marker date="1529479685074" expanded="true" signature="9550:9627" ph="select `mg_n... mg_user" />
             <marker date="1529479685074" expanded="true" signature="9976:10013" ph="select `head... user" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/mon_statistic.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="45" column="80" lean-forward="true" selection-start-line="45" selection-start-column="80" selection-end-line="45" selection-end-column="80" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/Statistic.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="245" column="48" lean-forward="false" selection-start-line="245" selection-start-column="48" selection-end-line="245" selection-end-column="48" />
+          <folding>
+            <marker date="1529553030097" expanded="true" signature="3775:4167" ph="select ch.us... user_props_consume_history" />
+            <marker date="1529553030097" expanded="true" signature="4248:4330" ph="select count... user_props_consume_history" />
+            <marker date="1529553030097" expanded="true" signature="5782:5822" ph="select * fro... room_log" />
+            <marker date="1529553030097" expanded="true" signature="7993:8022" ph="select id,mt... products" />
+            <marker date="1529553030097" expanded="true" signature="8523:8738" ph="select FROM_... charge" />
+            <marker date="1529553030097" expanded="true" signature="8759:8982" ph="select FROM_... charge" />
+            <marker date="1529553030097" expanded="true" signature="11769:11846" ph="select sum(c... clubs_card_log" />
+            <marker date="1529553030097" expanded="true" signature="11942:12029" ph="select sum(n... card_log" />
+            <marker date="1529553030097" expanded="true" signature="12419:12496" ph="select sum(n... card_log" />
+            <marker date="1529553030097" expanded="true" signature="12615:12692" ph="select sum(c... clubs_card_log" />
+            <marker date="1529553030097" expanded="true" signature="13022:13172" ph="select sub_t... card_log" />
+            <marker date="1529553030097" expanded="true" signature="13464:13614" ph="select sub_t... clubs_card_log" />
+            <marker date="1529553030097" expanded="true" signature="15559:15724" ph="select sum(c... clubs_card_log" />
+            <marker date="1529553030097" expanded="true" signature="15819:15915" ph="select sum(n... card_log" />
+            <marker date="1529553030097" expanded="true" signature="16311:16403" ph="select sum(n... card_log" />
+            <marker date="1529553030097" expanded="true" signature="16522:16684" ph="select sum(c... clubs_card_log" />
+            <marker date="1529553030097" expanded="true" signature="16984:17149" ph="select sub_t... card_log" />
+            <marker date="1529553030097" expanded="true" signature="17411:17646" ph="select sub_t... clubs_card_log" />
+            <marker date="1529553030097" expanded="true" signature="20451:20630" ph="select FROM_... user" />
+            <marker date="1529553030097" expanded="true" signature="20787:21080" ph="select u.uid... user" />
+            <marker date="1529553030097" expanded="true" signature="23136:23295" ph="select FROM_... user" />
+            <marker date="1529553030097" expanded="true" signature="23378:23497" ph="select FROM_... clubs_card_log" />
+            <marker date="1529553030097" expanded="true" signature="23882:23907" ph="select uid,n... user" />
+            <marker date="1529553030097" expanded="true" signature="24066:24307" ph="select a.uid... user" />
+            <marker date="1529553030097" expanded="true" signature="24463:24713" ph="select b.uid... clubs_card_log" />
+            <marker date="1529553030097" expanded="true" signature="27224:27319" ph="select * fro... mg_user" />
+            <marker date="1529553030097" expanded="true" signature="27814:27951" ph="select count... " />
+            <marker date="1529553030097" expanded="true" signature="28184:28237" ph="select count... " />
+            <marker date="1529553030097" expanded="true" signature="31142:31299" ph="select a.*,b... charge" />
+            <marker date="1529553030097" expanded="true" signature="31389:31517" ph="select count... " />
+            <marker date="1529553030097" expanded="true" signature="34207:34391" ph="select a.*,b... mg_user_charge" />
+            <marker date="1529553030097" expanded="true" signature="34476:34569" ph="select sum(r... " />
           </folding>
         </state>
       </provider>

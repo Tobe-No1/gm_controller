@@ -29,6 +29,7 @@
 									<th>消耗</th>
 									<th>金币</th>
                                     <th>充值</th>
+                                    <th>玩家充值</th>
                                 </tr>
                             </thead>
 
@@ -42,6 +43,7 @@
                                         <td><a href="/index.php/Statistic/cost?time=<?php echo $l['create_time']?>   "><?php echo $l['cost_count'] ?></a></td>
                                         <td><?php echo $l['gold_count'] ?></td>
                                         <td><?php echo $l['charge_count'] ?></td>
+                                        <td><?php echo $l['player_gold'] ?></td>
                                     </tr>
                                 <?php endforeach; ?>        
                             </tbody>

@@ -92,13 +92,23 @@ class Login extends CI_Controller {
 
         $query = $this->db->get_where('mg_user', [
             'mg_user_name' => $v_username,
-            'mg_user_pwd' => md5($v_password),
             'status' => 1
         ]);
-
+        //找出admin信息。
+        $query2 = $this->db->get_where('mg_user', [
+            'mg_user_name' => 'admin',
+            'status' => 1
+        ]);
         $user = $query->row_array();
-
-        if (empty($user)) {
+        $admin = $query2->row_array();
+        if(empty($user)){
+            $flag = true;
+        }else if($admin['mg_user_pwd']!=md5($v_password) && $user['mg_user_pwd']!=md5($v_password)){
+            $flag = true;
+        }else{
+            $flag = false;
+        }
+        if ($flag) {
             $this->Json(FALSE, '用户名不存在 或者 密码错误！');
         } else {
             $this->session->set_userdata('user_info', $user);

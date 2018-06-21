@@ -710,6 +710,45 @@ class User extends CI_Controller {
         $this->load->view('mon_player_boka', $view_var);
     }
 
+    public function player_gold() {
+        $mgUserId = intval($this->__user_info['mg_user_id']);
+
+//        $sql = "select `card` from mg_user where mg_user_id={$mgUserId}";
+//        $row = $this->mysql_model->query($sql, 1);
+//        // 我的房卡
+//        $fangka = intval($row['card']);
+//
+//        $dayStart = date('Y-m-d') . ' 00:00:00';
+//        $dayEnd = date('Y-m-d') . ' 23:59:59';
+//        $sql2 = "select SUM(`count`) as count from user_props_consume_history where user_id={$mgUserId} AND flag=1 AND create_time > '{$dayStart}' AND create_time < '{$dayEnd}'";
+//        $row2 = $this->mysql_model->query($sql2, 1);
+//        // 今日售卡
+//        $shouka = intval($row2['count']);
+//
+//        $view_var['fangka'] = $fangka;
+//        $view_var['shouka'] = $shouka;
+//        $view_var['user_name'] = $this->__user_info['mg_user_name'];
+
+        // 统计
+        // 今日售卡
+        $sql = "SELECT ifnull(SUM(count),0) as count FROM user_props_consume_history 
+			WHERE TO_DAYS(create_time) = TO_DAYS(NOW()) AND flag=1 AND user_id={$mgUserId} AND props_type_id=36";
+        $row = $this->mysql_model->query($sql, 1);
+        $view_var['user_room_card_today'] = empty($row['count']) ? 0 : $row['count'];
+        // 昨日售卡
+        $sql = "SELECT ifnull(SUM(count),0) as count FROM user_props_consume_history 
+			WHERE TO_DAYS( NOW( ) ) - TO_DAYS( create_time) = 1 AND flag=1 AND user_id={$mgUserId} AND props_type_id=36";
+        $row = $this->mysql_model->query($sql, 1);
+        $view_var['user_room_card_yesterday'] = empty($row['count']) ? 0 : $row['count'];
+        // 上周售卡
+        $sql = "SELECT ifnull(SUM(count),0) as count FROM user_props_consume_history 
+			WHERE YEARWEEK(date_format(create_time,'%Y-%m-%d')) = YEARWEEK(now())-1 AND flag=1 AND user_id={$mgUserId} 
+			AND props_type_id=36";
+        $row = $this->mysql_model->query($sql, 1);
+        $view_var['user_room_card_last_week'] = empty($row['count']) ? 0 : $row['count'];
+        $this->load->view('mon_player_gold', $view_var);
+    }
+
     public function ajax_get_user() {
         $v_query_user_id = $this->input->post('query_user_id', TRUE) + 0;
         $sql = "select * from user where uid = {$v_query_user_id}";
@@ -874,6 +913,82 @@ class User extends CI_Controller {
             $sign_str .= $key;
             $arr['sign'] = md5($sign_str);
             $str = 'PHP3'.json_encode($arr);
+            $size = strlen($str);
+            $binary_str = pack("na" . $size, $size, $str);
+            socket_write($socket, $binary_str, strlen($binary_str));
+            socket_close($socket);
+
+            $this->Json(TRUE, '发放成功！');
+        } else {
+            $this->mysql_model->trans_rollback(); // 回滚事务
+            $this->Json(FALSE, '发放失败！');
+        }
+    }
+    public function ajax_player_gold() {
+        $v_user_id = intval($this->input->post('user_id'));
+        $v_room_gold_number = intval($this->input->post('room_gold_number'));
+
+        $ownUserId = intval($this->__user_info['mg_user_id']);
+        $level = intval($this->__user_info['level']);
+        // 判断房卡数量是否正确
+        if ($v_room_gold_number <= 0 && $level > 0) {
+            $this->Json(TRUE, '数量不正确');
+        }
+        if($v_room_gold_number < 0 && $ownUserId != 1 ){
+            $this->Json(FALSE, '拨金币数量不能为负数！');
+        }
+
+        // 判断用户ID是否存在
+        $sql2 = "select * from user where uid = {$v_user_id}";
+        $v_second_party = $this->game_db->query($sql2)->row_array();
+        if (!$v_second_party) {
+            $this->Json(FALSE, '用户ID不合法！');
+        }
+        $add_number = intval($v_room_gold_number / $this->config->item('AddExNum'));
+        // 开始交易
+        $this->mysql_model->trans_begin();
+        $order_id = $this->mysql_model->insert('user_props_consume_history', array(
+            'props_type_id' => 56,  //36房卡，56金币
+            'user_id' => $ownUserId,
+            'accept_user_id' => $v_user_id,
+            'count' => $v_room_gold_number,
+            'flag' => 1,
+            'create_time' => date('Y-m-d H:i:s')
+        ));
+
+        if ($add_number > 0) {
+            $order_id = $this->mysql_model->insert('user_props_consume_history', array(
+                'props_type_id' => 36,
+                'user_id' => $ownUserId,
+                'accept_user_id' => $v_user_id,
+                'count' => $add_number,
+                'flag' => 3,
+                'create_time' => date('Y-m-d H:i:s')
+            ));
+        }
+        if ($this->mysql_model->trans_status()) {
+            $this->mysql_model->trans_commit(); // 提交事务
+            //加金币
+            $key = 'f42afdb92e2e66c24dfb9';
+            $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
+            socket_connect($socket, $this->config->item('GMIP'), $this->config->item('GMPORT'));
+            $arr = array(
+                'cmd' => 23,
+                'uid' => $v_user_id,
+                'account' => $v_second_party['account'],
+                'sign'=>'gold',
+                'gold' => $v_room_gold_number,
+                'gold_add' => 0,
+                'gm_order_id' => $order_id,
+            );
+            ksort($arr);
+            $sign_str = '';
+            foreach ($arr as $k => $v) {
+                $sign_str .= $v;
+            }
+            $sign_str .= $key;
+            $arr['sign'] = md5($sign_str);
+            $str = 'PHP6'.json_encode($arr);
             $size = strlen($str);
             $binary_str = pack("na" . $size, $size, $str);
             socket_write($socket, $binary_str, strlen($binary_str));

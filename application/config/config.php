@@ -25,7 +25,7 @@ $config['pay_appkey'] 	= '855a5b0a1258738ba009f75951c593dc';
 $config['download_url'] = 'xx';
 
 $config['GMIP'] = '127.0.0.1';
-$config['GMPORT'] = 8888;
+$config['GMPORT'] = 9911;
 $config['base_url'] = 'http://gm.com/';
 $config['game_name'] = '苏达游戏';
 $config['role_names'] = array( 0 => '公司', 1=>'一级代理', 2 =>'二级代理', 3=>'三级代理', 4=>'白金代理', 5=>'黄金代理', 6=>'白银代理',99=>'运营');
@@ -67,11 +67,12 @@ $config['menus'] = array(
 //    21  => array('link'=> '/index.php/User/award_query',          'is_show'=>true,    'name' => '中奖查询',       'icon' => 'icon-account-manage'),
     22  => array('link'=> '/index.php/Statistic/cost_rank',          'is_show'=>true,    'name' => '玩家消耗排行',       'icon' => 'icon-today-statistics'),
     23  => array('link'=> '/index.php/User/exchange',          'is_show'=>true,    'name' => '账号修改',       'icon' => 'icon-amend-paddword'),
+    24   => array('link'=> '/index.php/User/player_gold',       'is_show'=>true,    'name' => '玩家拨金币',       'icon' => 'icon-player-dial'),
 );
 
 $config['rights'] = array(
     99 => array(1,3,11,15,17,14),
-    0 => array(1,22,2,3,8,5,6,7,11,13,15,16,17,18,20,14,21,23),
+    0 => array(1,22,2,3,8,5,6,24,7,11,13,15,16,17,18,20,14,21,23),
     1 => array(3,4,8,5,6,7,14,21),
     2 => array(3,4,8,5,6,7,14),
 	3 => array(3,4,8,5,6,7,14),

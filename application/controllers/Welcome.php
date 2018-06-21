@@ -129,11 +129,13 @@ class Welcome extends CI_Controller {
             $tmp = curl_exec($ch);
             curl_close($ch);
             if (!$tmp) {
+                alert('拉取微信失败');
                 header("Location:" . $this->config->item('download_url') . "?v=" . date('mdHi')); //跳到玩家管理页面
                 return;
             }
             $access_token = json_decode($tmp, true);
             if (isset($access_token['errcode'])) {
+                alert('获取token失败');
                 header("Location:" . $this->config->item('download_url') . "?v=" . date('mdHi')); //跳到玩家管理页面
                 return;
             }
@@ -146,6 +148,7 @@ class Welcome extends CI_Controller {
             $tmp_info = curl_exec($ch);
             curl_close($ch);
             if (!$tmp_info) {
+                alert('获取用户信息失败');
                 header("Location:" . $this->config->item('download_url') . "?v=" . date('mdHi')); //跳到玩家管理页面
                 return;
             }
@@ -164,6 +167,7 @@ class Welcome extends CI_Controller {
                 $sql = "select * from recommend where account = '{$unionid}'";
                 $recommend = $this->game_db->query($sql)->row_array();
                 if (!empty($recommend)) {
+                    alert('已绑定邀请码');
                     header("Location:" . $this->config->item('download_url') . "?v=" . date('mdHi')); //跳到玩家管理页面
                     return;
                 }
@@ -193,6 +197,7 @@ class Welcome extends CI_Controller {
                 $this->game_db->insert('recommend', $data);
             }
         }
+        alert('获取code失败');
         header("Location:" . $this->config->item('download_url') . "?v=" . date('mdHi')); //跳到玩家管理页面
     }
 

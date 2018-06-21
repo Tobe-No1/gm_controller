@@ -92,7 +92,11 @@ class Stat extends CI_Controller {
         $total_info = $this->game_db->query($sql2)->row_array();
 
         //我直接下线
-        $where_str3 = ' and c.mtype=1 and b.invite_id =' . $current_user_id;
+        if($current_user_id !=1){
+            $where_str3 = ' and c.mtype=1 and b.invite_id =' . $current_user_id;
+        }else{
+            $where_str3 = ' and c.mtype=1 and b.invite_id in(0,1)';
+        }
         $sql2 = "select count(a.charge_id) as count,sum(a.amount) as total_money from charge as a left join user as b on a.uid = b.uid left join products as c on a.product_id=c.id where a.status = 1 " . $where_str . $where_str3;
         $xiaxian = $this->game_db->query($sql2)->row_array();
 
@@ -240,7 +244,11 @@ class Stat extends CI_Controller {
         $sql = "select * from mg_user where mg_user_id = " . $mgUserId;
         $user_info = $this->mysql_model->query($sql, 1);
         //发展玩家充值
-        $where_str2 = ' and c.mtype = 1 and invite_id = ' . $mgUserId;
+	if($mgUserId !=1){//当管理员为admin，加入invite_id=0的情况
+            $where_str2 = ' and c.mtype = 1 and invite_id = ' . $mgUserId;
+        }else{
+            $where_str2 = ' and c.mtype = 1 and invite_id in(0,1)';
+        }
         $sql2 = "select a.*,b.name from user as b left join charge as a  on a.uid = b.uid left join products as c on a.product_id=c.id where a.status = 1 " . $where_str . $where_str2;
         $datas1 = $this->game_db->query($sql2)->result_array();
         $sql3 = "select a.*,b.name from user as b left join charge as a on a.uid = b.uid left join products as c on a.product_id = c.id where a.status = 1 and c.mtype != 1" . $where_str;
@@ -256,6 +264,7 @@ class Stat extends CI_Controller {
         }
         $sql = "select * from mg_user where p_mg_user_id = " . $mgUserId;
         $list = $this->mysql_model->query($sql, 2);
+
         $xiaxian_total = 0;
         foreach ($list as $k => $t) {
             $uids = array($t['mg_user_id']);
@@ -269,8 +278,8 @@ class Stat extends CI_Controller {
                // }
                // $sql2 = "select count(a.charge_id) as count,sum(a.amount) as total_money from charge as a left join user as b on a.uid = b.uid where a.status = 1 " . $where_str . $tmp;
                $tmp = ' and c.mtype=1 and b.invite_id in(' . $uids_str . ')';
-               $sql2 = "select count(a.charge_id) as count,sum(a.amount) as total_money from charge as a left join user as b on a.uid = b.uid left join products as c on a.product_id=c.id where a.status = 1 " . $where_str . $tmp;
-		 $info = $this->game_db->query($sql2)->row_array();
+               $sql2 = "select count(a.charge_id) as count,sum(a.amount) as total_money from charge as a left join user as b on a.uid = b.uid left join products as c on a.product_id=c.id where a.status = 1 " . $where_str . $tmp;	
+	       $info = $this->game_db->query($sql2)->row_array();
             } else {
                 $info['total_money'] = 0;
             }
@@ -432,9 +441,11 @@ class Stat extends CI_Controller {
         } else {
             $mgUserId = intval($this->__user_info['mg_user_id']);
         }
-
-        $wherestr .= " and b.invite_id = " . $mgUserId;
-
+        if($mgUserId!=1){
+       	    $wherestr .= " and b.invite_id = " . $mgUserId;
+	}else{
+	    $wherestr .= " and b.invite_id in(0,1)";
+	}
         $temp['mgid'] = $mgUserId;
         //card_amount表示充值房卡的金额，gold_amount表示充值金币的金额,mtype=1直接玩家购买的房卡金额，mtype=2购买金币金额，mtype=3代理购买房卡
         $sql2 = "select sum(a.amount) as card_amount,a.uid,b.name from charge as a left join user as b on a.uid = b.uid left join products as c on a.product_id = c.id where a.status = 1 and c.mtype = 1" . $where_str.$wherestr." group by uid";

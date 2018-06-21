@@ -66,7 +66,7 @@ $(function () {
         });
 
 
-        //玩家拨卡
+        //玩家拨卡、拨金币
         $('#queryUserBtn').click(function () {
             var v_query_user_id = $('#query_user_id').val()
             $.post('/index.php/User/ajax_get_user', {query_user_id: v_query_user_id}, function (respond) {
@@ -83,6 +83,12 @@ $(function () {
                                     <div class="item-subtitle">房卡数量:' + respond.card + '&nbsp;&nbsp;群主:'+respond.qunzhu+'&nbsp;&nbsp;状态:'+respond.status+'</div>\n\
                                 </div></li></div></li><li class="item-content" user_id="' + respond.uid + '"></div></li>';
                     $('#query_fruit2').html(v_query_user_child2);
+
+                    var v_query_user_child3 = '<li class="item-content provideRoomGold"  user_id="' + respond.uid + '" ><div class="item-media"><img src="' + respond.head + '" width="44"></div><div class="item-inner">\n\
+                                    <div class="item-title-row"><div class="item-title">' + respond.name + '</div></div>\n\
+                                    <div class="item-subtitle">金币数量:' + respond.gold + '&nbsp;&nbsp;群主:'+respond.qunzhu+'&nbsp;&nbsp;状态:'+respond.status+'</div>\n\
+                                </div></li></div></li><li class="item-content" user_id="' + respond.uid + '"></div></li>';
+                    $('#query_fruit3').html(v_query_user_child3);
                 }
             }, 'json');
         });
@@ -368,6 +374,34 @@ $(function () {
                             }
                         }, 'json')
             },function(){ has_click = '0';});
+    })
+
+    $ (document).on("click", ".provideRoomGold", function () {
+        var v_user_id = $(this).attr('user_id');
+        if(has_click == '1') { return; }
+        has_click = '1';
+        $.prompt('请输入发放数量', function (value) {
+            $.post('/index.php/User/ajax_player_gold', {user_id: v_user_id, room_gold_number: value},
+                function (respond) {
+                    has_click = '0';
+                    $.toast(respond.msg)
+                    if (respond.status) {
+                        setTimeout(function () {
+                            var v_query_user_id = $('#query_user_id').val();
+                            $.post('/index.php/User/ajax_get_user', {query_user_id: v_query_user_id}, function (respond) {
+                                $.toast(respond.msg)
+                                if (respond.status) {
+                                    var v_query_user_child = '<li class="item-content provideRoomGold"  user_id="' + respond.uid + '"><div class="item-media"><img src="' + respond.head + '" width="44"></div><div class="item-inner">\n\
+                                                    <div class="item-title-row"><div class="item-title">' + respond.name + '</div></div>\n\
+                                                    <div class="item-subtitle">金币数量:' + respond.gold + '&nbsp;&nbsp;群主:'+respond.qunzhu+'&nbsp;&nbsp;状态:'+respond.status+'</div>\n\</div>\n\
+                                                </div></li><li class="item-content setQunzhu" user_id="' + respond.uid + '"><div><p>设置群主</p></div></div></li>';
+                                    $('#query_fruit3').html(v_query_user_child);
+                                }
+                            }, 'json');
+                        }, 1000)
+                    }
+                }, 'json')
+        },function(){ has_click = '0';});
     })
     
      $ (document).on("click", ".setQunzhu", function () { 

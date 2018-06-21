@@ -297,31 +297,38 @@ class Statistic extends CI_Controller
             if($result['game_cost']||$result2['game_cost']){
                 $game_cost[$v]=$result['game_cost']+$result2['game_cost'];
                 if($k==2){
+                    //普通场麻将记录
                     $sql="select sub_type,sum(num) as majiang_cost from card_log where change_type=0 and game_type=2".$where_time." group by sub_type order by majiang_cost desc";
                     $majiang = $this->game_db->query($sql)->result_array();
                     foreach($majiang as $v){
                         $majiang_cost[$majiang_type[$v['sub_type']]]=$v['majiang_cost'];
                     }
-
+                    //俱乐部麻将记录
                     $sql2="select sub_type,sum(count) as majiang_cost from clubs_card_log where game_type=2 and opt=2".$where_time." group by sub_type order by majiang_cost desc";
                     $majiang2 = $this->game_db->query($sql2)->result_array();
                     foreach($majiang2 as $v){
                         $majiang_cost2[$majiang_type[$v['sub_type']]]=$v['majiang_cost'];
                     }
-                    foreach($majiang_cost as $k=>$v){
-                        foreach ($majiang_cost2 as $s=>$t){
-                            if($k==$s){
-                                $majiang_cost3[$k]=$v+$t;
-                            }else{
-                                if(!array_key_exists($k,$majiang_cost3)){
-                                    $majiang_cost3[$k] = $v;
-                                }
-                                if(!array_key_exists($s,$majiang_cost3)){
-                                    $majiang_cost3[$s] = $t;
+
+                    if(count($majiang_cost)>0){
+                        foreach($majiang_cost as $k=>$v){
+                            foreach ($majiang_cost2 as $s=>$t){
+                                if($k==$s){
+                                    $majiang_cost3[$k]=$v+$t;
+                                }else{
+                                    if(!array_key_exists($s,$majiang_cost3)){
+                                        $majiang_cost3[$s] = $t;
+                                    }
                                 }
                             }
+                            if(!array_key_exists($k,$majiang_cost3)){
+                                $majiang_cost3[$k] = $v;
+                            }
                         }
+                    }else{
+                        $majiang_cost3 = $majiang_cost2;
                     }
+
                     arsort($majiang_cost3);
                 }
             }
@@ -380,20 +387,26 @@ class Statistic extends CI_Controller
                     foreach($majiang2 as $v){
                         $majiang_cost2[$majiang_type[$v['sub_type']]]=$v['majiang_cost'];
                     }
-                    foreach($majiang_cost as $k=>$v) {
-                        foreach ($majiang_cost2 as $s => $t) {
-                            if ($k == $s) {
-                                $majiang_cost3[$k] = $v + $t;
-                            } else {
-                                if (!array_key_exists($s, $majiang_cost3)) {
-                                    $majiang_cost3[$s] = $t;
+
+                    if(count($majiang_cost)>0){
+                        foreach($majiang_cost as $k=>$v) {
+                            foreach ($majiang_cost2 as $s => $t) {
+                                if ($k == $s) {
+                                    $majiang_cost3[$k] = $v + $t;
+                                } else {
+                                    if (!array_key_exists($s, $majiang_cost3)) {
+                                        $majiang_cost3[$s] = $t;
+                                    }
                                 }
                             }
+                            if (!array_key_exists($k, $majiang_cost3)) {
+                                $majiang_cost3[$k] = $v;
+                            }
                         }
-                        if (!array_key_exists($k, $majiang_cost3)) {
-                            $majiang_cost3[$k] = $v;
-                        }
+                    }else{
+                        $majiang_cost3 = $majiang_cost2;
                     }
+
                     arsort($majiang_cost3);
                 }
             }

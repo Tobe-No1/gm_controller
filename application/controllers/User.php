@@ -851,13 +851,13 @@ class User extends CI_Controller {
         }
         
         //自己下线代理
-        $login_uid = $this->__user_info['mg_user_id'];
-        $filter_str = $this->user_m->getInvoteStr($login_uid);
-        $filter_arr = explode(',', $filter_str);
-        $filter_arr[] = $login_uid;
-        if($login_uid != 1 && $v_user_id != $login_uid && !in_array($v_second_party['invite_id'],$filter_arr)){
-            $this->Json(FALSE, '不是您体系内玩家！');
-        }
+        //$login_uid = $this->__user_info['mg_user_id'];
+        //$filter_str = $this->user_m->getInvoteStr($login_uid);
+        //$filter_arr = explode(',', $filter_str);
+        //$filter_arr[] = $login_uid;
+        //if($login_uid != 1 && $v_user_id != $login_uid && !in_array($v_second_party['invite_id'],$filter_arr)){
+          //  $this->Json(FALSE, '不是您体系内玩家！');
+        //}
         
 
         $add_number = intval($v_room_card_number / $this->config->item('AddExNum'));

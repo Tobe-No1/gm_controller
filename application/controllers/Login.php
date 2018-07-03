@@ -270,12 +270,13 @@ class Login extends CI_Controller {
     
     
     private function uinfo($id) {
-        $sql = "select `mg_name`,`level`,`invotecode`,`card` from `mg_user` where mg_user_id={$id}";
+        $sql = "select `mg_name`,`level`,`invotecode`,`card`,agree_privary from `mg_user` where mg_user_id={$id}";
         $row = $this->mysql_model->query($sql, 1);
         $info['uname'] = $row['mg_name'];
         $info['level'] = $row['level'];
         $info['icode'] = $row['invotecode'];
 		$info['card'] = $row['card'];
+                $info['agree_privary'] = $row['agree_privary'];
         $role_names = $this->config->item('role_names');
         $info['role_names'] = $role_names[$row['level']];
         $sql = "select `head` from `user` where uid ={$id}";

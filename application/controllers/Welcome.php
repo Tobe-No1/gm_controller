@@ -474,7 +474,15 @@ class Welcome extends CI_Controller {
     }
 
     // --------------------------------------------------
-
+    
+    public function agree_privary() {
+        $mgUserId = intval($this->__user_info['mg_user_id']);
+        $agree_time = date('Y-m-d H:i:s');
+        $sql = "update mg_user set agree_privary = 1,agree_time = '{$agree_time}' where mg_user_id ={$mgUserId} ";
+        $this->db->query($sql);
+        echo json_encode(array('status' => 0));
+    }
+    
     /* main */
     public function menu() {
         $this->is_login();
@@ -993,6 +1001,7 @@ class Welcome extends CI_Controller {
         $info['uname'] = $row['mg_name'];
         $info['level'] = $row['level'];
         $info['icode'] = $row['invotecode'];
+        $info['agree_privary'] = $row['agree_privary'];
         $role_names = $this->config->item('role_names');
         $info['role_names'] = $role_names[$row['level']];
         $sql = "select sum(amount)/100 as icount from `charge` where uid ={$id} and `status` =1";

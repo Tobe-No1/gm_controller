@@ -96,7 +96,7 @@
                                     <td><?php echo date('Y-m-d H:i:s', $l['pay_time']); ?></td>
                                     <td>￥ <?= sprintf("%.2f", $l['amount'] / 100) ?></td>
                                 </tr>
-                    <?php endforeach; ?>
+                    <?php  endforeach; ?>
                         </tbody>
                     </table>
                     <!--底部版权信息-->

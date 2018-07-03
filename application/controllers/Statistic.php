@@ -228,23 +228,44 @@ class Statistic extends CI_Controller
         $sql2 = "select FROM_UNIXTIME(a.pay_time,'%Y-%m-%d') AS t,sum(a.amount) as player_total_money from charge as a left join user as b on a.uid = b.uid where a.status = 1 and product_id in (".$product_id2.") " . $where_str2." group by t ";
         $total_info_gold = $this->game_db->query($sql1)->result_array();
         $total_player_gold = $this->game_db->query($sql2)->result_array();
-        $total_info_gold = array_merge($total_player_gold,$total_info_gold);
-        foreach($total_info_gold as $s=>$t) {
-            if (!array_key_exists('total_money', $t)) {
-                $total_info_gold[$s]['total_money'] = 0;
+        $total_info = array();
+        $total_player = array();
+        $total_gold = array();
+        foreach($total_info_gold as $k => $v){
+            $total_info[$v['t']] = $v;
+        }
+        foreach($total_player_gold as $k => $v){
+            $total_player[$v['t']] = $v;
+        }
+        if(count($total_info)>0){
+            foreach ($total_info as $k => $v){
+                foreach ($total_player as $s => $t){
+                    if($k == $s){
+                        $total_gold[$k]['total_money']=$v['total_money'];
+                        $total_gold[$k]['player_total_money'] = $t['player_total_money'];
+                    }else{
+                        $total_gold[$s]['player_total_money'] = $t['player_total_money'];
+                        $total_gold[$s]['total_money'] = 0;
+                    }
+                    if(!array_key_exists($k,$total_gold)){
+                        $total_gold[$k]['total_money'] = $v;
+                        $total_gold[$k]['player_total_money'] = 0;
+                    }
+                }
             }
-            if (!array_key_exists('player_total_money', $t)) {
-                $total_info_gold[$s]['player_total_money'] = 0;
+        }else{
+            $total_gold = $total_player;
+            foreach($total_player as $k=>$k){
+                $total_gold[$k]['total_money']=0;
             }
         }
-//        dump($total_info_gold);die();
         //获得记录
         $list = $this->mysql_model->get_results('mg_base_statistic', $where, 'create_time desc, id desc', $start, $limit);
         foreach($list as $k=>$v){
             $list[$k]['gold_count']=0;
             $list[$k]['player_gold']=0;
-            foreach($total_info_gold as $s=>$t){
-                if($t['t']==$v['create_time']){
+            foreach($total_gold as $s=>$t){
+                if($s==$v['create_time']){
                     $list[$k]['gold_count']=intval($t['total_money']/100);
                     $list[$k]['player_gold']=intval($t['player_total_money']/100);
                 }
